@@ -4,7 +4,7 @@
 // 	protoc        v3.12.1
 // source: customer.proto
 
-package hello
+package greet
 
 import (
 	context "context"
@@ -29,21 +29,16 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-// Request message để tạo một customer mới.
-type CustomerRequest struct {
+type SayHello struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int32                      `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"` // Unique ID
-	Name      string                     `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Email     string                     `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
-	Phone     string                     `protobuf:"bytes,4,opt,name=phone,proto3" json:"phone,omitempty"`
-	Addresses []*CustomerRequest_Address `protobuf:"bytes,5,rep,name=addresses,proto3" json:"addresses,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
-func (x *CustomerRequest) Reset() {
-	*x = CustomerRequest{}
+func (x *SayHello) Reset() {
+	*x = SayHello{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_customer_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -51,13 +46,13 @@ func (x *CustomerRequest) Reset() {
 	}
 }
 
-func (x *CustomerRequest) String() string {
+func (x *SayHello) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CustomerRequest) ProtoMessage() {}
+func (*SayHello) ProtoMessage() {}
 
-func (x *CustomerRequest) ProtoReflect() protoreflect.Message {
+func (x *SayHello) ProtoReflect() protoreflect.Message {
 	mi := &file_customer_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -69,57 +64,28 @@ func (x *CustomerRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CustomerRequest.ProtoReflect.Descriptor instead.
-func (*CustomerRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use SayHello.ProtoReflect.Descriptor instead.
+func (*SayHello) Descriptor() ([]byte, []int) {
 	return file_customer_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CustomerRequest) GetId() int32 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *CustomerRequest) GetName() string {
+func (x *SayHello) GetName() string {
 	if x != nil {
 		return x.Name
 	}
 	return ""
 }
 
-func (x *CustomerRequest) GetEmail() string {
-	if x != nil {
-		return x.Email
-	}
-	return ""
-}
-
-func (x *CustomerRequest) GetPhone() string {
-	if x != nil {
-		return x.Phone
-	}
-	return ""
-}
-
-func (x *CustomerRequest) GetAddresses() []*CustomerRequest_Address {
-	if x != nil {
-		return x.Addresses
-	}
-	return nil
-}
-
-type CustomerResponse struct {
+type HelloReply struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id      int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Success bool  `protobuf:"varint,2,opt,name=success,proto3" json:"success,omitempty"`
+	Message string `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
 }
 
-func (x *CustomerResponse) Reset() {
-	*x = CustomerResponse{}
+func (x *HelloReply) Reset() {
+	*x = HelloReply{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_customer_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -127,13 +93,13 @@ func (x *CustomerResponse) Reset() {
 	}
 }
 
-func (x *CustomerResponse) String() string {
+func (x *HelloReply) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CustomerResponse) ProtoMessage() {}
+func (*HelloReply) ProtoMessage() {}
 
-func (x *CustomerResponse) ProtoReflect() protoreflect.Message {
+func (x *HelloReply) ProtoReflect() protoreflect.Message {
 	mi := &file_customer_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -145,191 +111,35 @@ func (x *CustomerResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CustomerResponse.ProtoReflect.Descriptor instead.
-func (*CustomerResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use HelloReply.ProtoReflect.Descriptor instead.
+func (*HelloReply) Descriptor() ([]byte, []int) {
 	return file_customer_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CustomerResponse) GetId() int32 {
+func (x *HelloReply) GetMessage() string {
 	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *CustomerResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
-type CustomerFilter struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Keyword string `protobuf:"bytes,1,opt,name=keyword,proto3" json:"keyword,omitempty"`
-}
-
-func (x *CustomerFilter) Reset() {
-	*x = CustomerFilter{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_customer_proto_msgTypes[2]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *CustomerFilter) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CustomerFilter) ProtoMessage() {}
-
-func (x *CustomerFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_customer_proto_msgTypes[2]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CustomerFilter.ProtoReflect.Descriptor instead.
-func (*CustomerFilter) Descriptor() ([]byte, []int) {
-	return file_customer_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *CustomerFilter) GetKeyword() string {
-	if x != nil {
-		return x.Keyword
+		return x.Message
 	}
 	return ""
-}
-
-type CustomerRequest_Address struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Street            string `protobuf:"bytes,1,opt,name=street,proto3" json:"street,omitempty"`
-	City              string `protobuf:"bytes,2,opt,name=city,proto3" json:"city,omitempty"`
-	State             string `protobuf:"bytes,3,opt,name=state,proto3" json:"state,omitempty"`
-	Zip               string `protobuf:"bytes,4,opt,name=zip,proto3" json:"zip,omitempty"`
-	IsShippingAddress bool   `protobuf:"varint,5,opt,name=isShippingAddress,proto3" json:"isShippingAddress,omitempty"`
-}
-
-func (x *CustomerRequest_Address) Reset() {
-	*x = CustomerRequest_Address{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_customer_proto_msgTypes[3]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *CustomerRequest_Address) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CustomerRequest_Address) ProtoMessage() {}
-
-func (x *CustomerRequest_Address) ProtoReflect() protoreflect.Message {
-	mi := &file_customer_proto_msgTypes[3]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CustomerRequest_Address.ProtoReflect.Descriptor instead.
-func (*CustomerRequest_Address) Descriptor() ([]byte, []int) {
-	return file_customer_proto_rawDescGZIP(), []int{0, 0}
-}
-
-func (x *CustomerRequest_Address) GetStreet() string {
-	if x != nil {
-		return x.Street
-	}
-	return ""
-}
-
-func (x *CustomerRequest_Address) GetCity() string {
-	if x != nil {
-		return x.City
-	}
-	return ""
-}
-
-func (x *CustomerRequest_Address) GetState() string {
-	if x != nil {
-		return x.State
-	}
-	return ""
-}
-
-func (x *CustomerRequest_Address) GetZip() string {
-	if x != nil {
-		return x.Zip
-	}
-	return ""
-}
-
-func (x *CustomerRequest_Address) GetIsShippingAddress() bool {
-	if x != nil {
-		return x.IsShippingAddress
-	}
-	return false
 }
 
 var File_customer_proto protoreflect.FileDescriptor
 
 var file_customer_proto_rawDesc = []byte{
 	0x0a, 0x0e, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x12, 0x05, 0x68, 0x65, 0x6c, 0x6c, 0x6f, 0x22, 0xad, 0x02, 0x0a, 0x0f, 0x43, 0x75, 0x73, 0x74,
-	0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69,
-	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e,
-	0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12,
-	0x14, 0x0a, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05,
-	0x65, 0x6d, 0x61, 0x69, 0x6c, 0x12, 0x14, 0x0a, 0x05, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x18, 0x04,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x12, 0x3c, 0x0a, 0x09, 0x61,
-	0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x65, 0x73, 0x18, 0x05, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1e,
-	0x2e, 0x68, 0x65, 0x6c, 0x6c, 0x6f, 0x2e, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x52, 0x09,
-	0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x65, 0x73, 0x1a, 0x8b, 0x01, 0x0a, 0x07, 0x41, 0x64,
-	0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x74, 0x72, 0x65, 0x65, 0x74, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73, 0x74, 0x72, 0x65, 0x65, 0x74, 0x12, 0x12, 0x0a,
-	0x04, 0x63, 0x69, 0x74, 0x79, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x63, 0x69, 0x74,
-	0x79, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x7a, 0x69, 0x70, 0x18, 0x04,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x7a, 0x69, 0x70, 0x12, 0x2c, 0x0a, 0x11, 0x69, 0x73, 0x53,
-	0x68, 0x69, 0x70, 0x70, 0x69, 0x6e, 0x67, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x05,
-	0x20, 0x01, 0x28, 0x08, 0x52, 0x11, 0x69, 0x73, 0x53, 0x68, 0x69, 0x70, 0x70, 0x69, 0x6e, 0x67,
-	0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x22, 0x3c, 0x0a, 0x10, 0x43, 0x75, 0x73, 0x74, 0x6f,
-	0x6d, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69,
-	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x73,
-	0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x73, 0x75,
-	0x63, 0x63, 0x65, 0x73, 0x73, 0x22, 0x2a, 0x0a, 0x0e, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65,
-	0x72, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x12, 0x18, 0x0a, 0x07, 0x6b, 0x65, 0x79, 0x77, 0x6f,
-	0x72, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6b, 0x65, 0x79, 0x77, 0x6f, 0x72,
-	0x64, 0x32, 0x8f, 0x01, 0x0a, 0x05, 0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x12, 0x41, 0x0a, 0x0c, 0x47,
-	0x65, 0x74, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x73, 0x12, 0x15, 0x2e, 0x68, 0x65,
-	0x6c, 0x6c, 0x6f, 0x2e, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x46, 0x69, 0x6c, 0x74,
-	0x65, 0x72, 0x1a, 0x16, 0x2e, 0x68, 0x65, 0x6c, 0x6c, 0x6f, 0x2e, 0x43, 0x75, 0x73, 0x74, 0x6f,
-	0x6d, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x00, 0x30, 0x01, 0x12, 0x43,
-	0x0a, 0x0e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72,
-	0x12, 0x16, 0x2e, 0x68, 0x65, 0x6c, 0x6c, 0x6f, 0x2e, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65,
-	0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e, 0x68, 0x65, 0x6c, 0x6c, 0x6f,
-	0x2e, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x22, 0x00, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x12, 0x05, 0x67, 0x72, 0x65, 0x65, 0x74, 0x22, 0x1e, 0x0a, 0x08, 0x53, 0x61, 0x79, 0x48, 0x65,
+	0x6c, 0x6c, 0x6f, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x26, 0x0a, 0x0a, 0x48, 0x65, 0x6c, 0x6c, 0x6f,
+	0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x32,
+	0x74, 0x0a, 0x05, 0x67, 0x72, 0x65, 0x65, 0x74, 0x12, 0x32, 0x0a, 0x0a, 0x47, 0x65, 0x74, 0x53,
+	0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x12, 0x0f, 0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x53,
+	0x61, 0x79, 0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x1a, 0x11, 0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e,
+	0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x37, 0x0a, 0x0f,
+	0x47, 0x65, 0x74, 0x53, 0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x41, 0x67, 0x61, 0x69, 0x6e, 0x12,
+	0x0f, 0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x53, 0x61, 0x79, 0x48, 0x65, 0x6c, 0x6c, 0x6f,
+	0x1a, 0x11, 0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x52, 0x65,
+	0x70, 0x6c, 0x79, 0x22, 0x00, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -344,24 +154,21 @@ func file_customer_proto_rawDescGZIP() []byte {
 	return file_customer_proto_rawDescData
 }
 
-var file_customer_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_customer_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_customer_proto_goTypes = []interface{}{
-	(*CustomerRequest)(nil),         // 0: hello.CustomerRequest
-	(*CustomerResponse)(nil),        // 1: hello.CustomerResponse
-	(*CustomerFilter)(nil),          // 2: hello.CustomerFilter
-	(*CustomerRequest_Address)(nil), // 3: hello.CustomerRequest.Address
+	(*SayHello)(nil),   // 0: greet.SayHello
+	(*HelloReply)(nil), // 1: greet.HelloReply
 }
 var file_customer_proto_depIdxs = []int32{
-	3, // 0: hello.CustomerRequest.addresses:type_name -> hello.CustomerRequest.Address
-	2, // 1: hello.Hello.GetCustomers:input_type -> hello.CustomerFilter
-	0, // 2: hello.Hello.CreateCustomer:input_type -> hello.CustomerRequest
-	0, // 3: hello.Hello.GetCustomers:output_type -> hello.CustomerRequest
-	1, // 4: hello.Hello.CreateCustomer:output_type -> hello.CustomerResponse
-	3, // [3:5] is the sub-list for method output_type
-	1, // [1:3] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	0, // 0: greet.greet.GetStudent:input_type -> greet.SayHello
+	0, // 1: greet.greet.GetStudentAgain:input_type -> greet.SayHello
+	1, // 2: greet.greet.GetStudent:output_type -> greet.HelloReply
+	1, // 3: greet.greet.GetStudentAgain:output_type -> greet.HelloReply
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_customer_proto_init() }
@@ -371,7 +178,7 @@ func file_customer_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_customer_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CustomerRequest); i {
+			switch v := v.(*SayHello); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -383,31 +190,7 @@ func file_customer_proto_init() {
 			}
 		}
 		file_customer_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CustomerResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_customer_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CustomerFilter); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_customer_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CustomerRequest_Address); i {
+			switch v := v.(*HelloReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -425,7 +208,7 @@ func file_customer_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_customer_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -447,142 +230,110 @@ var _ grpc.ClientConnInterface
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion6
 
-// HelloClient is the client API for Hello service.
+// GreetClient is the client API for Greet service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type HelloClient interface {
-	// Get customer theo CustomerFilter (Trả từ server về client)
-	GetCustomers(ctx context.Context, in *CustomerFilter, opts ...grpc.CallOption) (Hello_GetCustomersClient, error)
-	// Tạo một customer (Nhận request từ client)
-	CreateCustomer(ctx context.Context, in *CustomerRequest, opts ...grpc.CallOption) (*CustomerResponse, error)
+type GreetClient interface {
+	GetStudent(ctx context.Context, in *SayHello, opts ...grpc.CallOption) (*HelloReply, error)
+	GetStudentAgain(ctx context.Context, in *SayHello, opts ...grpc.CallOption) (*HelloReply, error)
 }
 
-type helloClient struct {
+type greetClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewHelloClient(cc grpc.ClientConnInterface) HelloClient {
-	return &helloClient{cc}
+func NewGreetClient(cc grpc.ClientConnInterface) GreetClient {
+	return &greetClient{cc}
 }
 
-func (c *helloClient) GetCustomers(ctx context.Context, in *CustomerFilter, opts ...grpc.CallOption) (Hello_GetCustomersClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_Hello_serviceDesc.Streams[0], "/hello.Hello/GetCustomers", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &helloGetCustomersClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type Hello_GetCustomersClient interface {
-	Recv() (*CustomerRequest, error)
-	grpc.ClientStream
-}
-
-type helloGetCustomersClient struct {
-	grpc.ClientStream
-}
-
-func (x *helloGetCustomersClient) Recv() (*CustomerRequest, error) {
-	m := new(CustomerRequest)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func (c *helloClient) CreateCustomer(ctx context.Context, in *CustomerRequest, opts ...grpc.CallOption) (*CustomerResponse, error) {
-	out := new(CustomerResponse)
-	err := c.cc.Invoke(ctx, "/hello.Hello/CreateCustomer", in, out, opts...)
+func (c *greetClient) GetStudent(ctx context.Context, in *SayHello, opts ...grpc.CallOption) (*HelloReply, error) {
+	out := new(HelloReply)
+	err := c.cc.Invoke(ctx, "/greet.greet/GetStudent", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// HelloServer is the server API for Hello service.
-type HelloServer interface {
-	// Get customer theo CustomerFilter (Trả từ server về client)
-	GetCustomers(*CustomerFilter, Hello_GetCustomersServer) error
-	// Tạo một customer (Nhận request từ client)
-	CreateCustomer(context.Context, *CustomerRequest) (*CustomerResponse, error)
-}
-
-// UnimplementedHelloServer can be embedded to have forward compatible implementations.
-type UnimplementedHelloServer struct {
-}
-
-func (*UnimplementedHelloServer) GetCustomers(*CustomerFilter, Hello_GetCustomersServer) error {
-	return status.Errorf(codes.Unimplemented, "method GetCustomers not implemented")
-}
-func (*UnimplementedHelloServer) CreateCustomer(context.Context, *CustomerRequest) (*CustomerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateCustomer not implemented")
-}
-
-func RegisterHelloServer(s *grpc.Server, srv HelloServer) {
-	s.RegisterService(&_Hello_serviceDesc, srv)
-}
-
-func _Hello_GetCustomers_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(CustomerFilter)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
+func (c *greetClient) GetStudentAgain(ctx context.Context, in *SayHello, opts ...grpc.CallOption) (*HelloReply, error) {
+	out := new(HelloReply)
+	err := c.cc.Invoke(ctx, "/greet.greet/GetStudentAgain", in, out, opts...)
+	if err != nil {
+		return nil, err
 	}
-	return srv.(HelloServer).GetCustomers(m, &helloGetCustomersServer{stream})
+	return out, nil
 }
 
-type Hello_GetCustomersServer interface {
-	Send(*CustomerRequest) error
-	grpc.ServerStream
+// GreetServer is the server API for Greet service.
+type GreetServer interface {
+	GetStudent(context.Context, *SayHello) (*HelloReply, error)
+	GetStudentAgain(context.Context, *SayHello) (*HelloReply, error)
 }
 
-type helloGetCustomersServer struct {
-	grpc.ServerStream
+// UnimplementedGreetServer can be embedded to have forward compatible implementations.
+type UnimplementedGreetServer struct {
 }
 
-func (x *helloGetCustomersServer) Send(m *CustomerRequest) error {
-	return x.ServerStream.SendMsg(m)
+func (*UnimplementedGreetServer) GetStudent(context.Context, *SayHello) (*HelloReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStudent not implemented")
+}
+func (*UnimplementedGreetServer) GetStudentAgain(context.Context, *SayHello) (*HelloReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStudentAgain not implemented")
 }
 
-func _Hello_CreateCustomer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CustomerRequest)
+func RegisterGreetServer(s *grpc.Server, srv GreetServer) {
+	s.RegisterService(&_Greet_serviceDesc, srv)
+}
+
+func _Greet_GetStudent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SayHello)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HelloServer).CreateCustomer(ctx, in)
+		return srv.(GreetServer).GetStudent(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/hello.Hello/CreateCustomer",
+		FullMethod: "/greet.greet/GetStudent",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HelloServer).CreateCustomer(ctx, req.(*CustomerRequest))
+		return srv.(GreetServer).GetStudent(ctx, req.(*SayHello))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _Hello_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "hello.Hello",
-	HandlerType: (*HelloServer)(nil),
+func _Greet_GetStudentAgain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SayHello)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GreetServer).GetStudentAgain(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/greet.greet/GetStudentAgain",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GreetServer).GetStudentAgain(ctx, req.(*SayHello))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _Greet_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "greet.greet",
+	HandlerType: (*GreetServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateCustomer",
-			Handler:    _Hello_CreateCustomer_Handler,
+			MethodName: "GetStudent",
+			Handler:    _Greet_GetStudent_Handler,
 		},
-	},
-	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "GetCustomers",
-			Handler:       _Hello_GetCustomers_Handler,
-			ServerStreams: true,
+			MethodName: "GetStudentAgain",
+			Handler:    _Greet_GetStudentAgain_Handler,
 		},
 	},
+	Streams:  []grpc.StreamDesc{},
 	Metadata: "customer.proto",
 }

@@ -2,107 +2,32 @@ package main
 
 import (
 	"context"
-	"io"
 	"log"
-	pb "lozi-training/grpc/customer"
+	pd "lozi-training/grpc/customer"
+	"time"
 
 	"google.golang.org/grpc"
 )
 
-const (
-	address = "localhost:8080"
+var (
+	address     = "localhost:8080"
+	defaultName = "some name"
 )
 
-// createCustomer calls the RPC method CreateCustomer of CustomerServer
-func createCustomer(client pb.HelloClient, customer *pb.CustomerRequest) {
+// func(s *server) SayHello() {
 
-	resp, err := client.CreateCustomer(context.Background(), customer)
-	if err != nil {
-		log.Fatalf("Could not create Customer: %v", err)
-	}
-	if resp.Success {
-		log.Printf("A new Customer has been added with id: %d", resp.Id)
-	}
-}
-
-// getCustomers calls the RPC method GetCustomers of CustomerServer
-func getCustomers(client pb.HelloClient, filter *pb.CustomerFilter) {
-
-	// calling the streaming API
-	stream, err := client.GetCustomers(context.Background(), filter)
-	if err != nil {
-		log.Fatalf("Error on get customers: %v", err)
-	}
-	for {
-		customer, err := stream.Recv()
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			log.Fatalf("%v.GetCustomers(_) = _, %v", client, err)
-		}
-		log.Printf("Customer: %v", customer)
-	}
-}
+// }
 
 func main() {
-
-	// Set up a connection to the gRPC server.
-	conn, err := grpc.Dial(address, grpc.WithInsecure())
-	if err != nil {
-		log.Fatalf("did not connect: %v", err)
-	}
+	conn, _ := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock())
 	defer conn.Close()
 
-	// Creates a new CustomerClient
-	client := pb.NewHelloClient(conn)
+	c := pd.NewGreetClient(conn)
 
-	customer := &pb.CustomerRequest{
-		Id:    1,
-		Name:  "CongPV 1",
-		Email: "vancogn1@gmail.com",
-		Phone: "123456789",
-		Addresses: []*pb.CustomerRequest_Address{
-			&pb.CustomerRequest_Address{
-				Street:            "111C Nguyen Lam",
-				City:              "TPHCM",
-				State:             "TP",
-				Zip:               "124",
-				IsShippingAddress: false,
-			},
-			&pb.CustomerRequest_Address{
-				Street:            "111B Nguyen Lam",
-				City:              "TPHCM",
-				State:             "TP",
-				Zip:               "124",
-				IsShippingAddress: true,
-			},
-		},
-	}
-
-	// Create a new customer
-	createCustomer(client, customer)
-
-	customer = &pb.CustomerRequest{
-		Id:    2,
-		Name:  "CongPV 2",
-		Email: "vancogn2@gmail.com",
-		Phone: "1234567890",
-		Addresses: []*pb.CustomerRequest_Address{
-			{
-				Street:            "302 To Hien Thanh",
-				City:              "TPHCM",
-				State:             "TP",
-				Zip:               "124",
-				IsShippingAddress: true,
-			},
-		},
-	}
-
-	// Create a new customer
-	createCustomer(client, customer)
-
-	// Filter with an empty Keyword
-	filter := &pb.CustomerFilter{Keyword: "CongPV 2"}
-	getCustomers(client, filter)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	defer cancel()
+	r, _ := c.GetStudent(ctx, &pd.SayHello{Name: defaultName})
+	r2, _ := c.GetStudentAgain(ctx, &pd.SayHello{Name: defaultName})
+	log.Println("Greeting: ", r.GetMessage())
+	log.Println("Greeting: ", r2.GetMessage())
 }
