@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.23.0-devel
 // 	protoc        v3.12.1
-// source: customer.proto
+// source: hello.proto
 
 package greet
 
@@ -40,7 +40,7 @@ type SayHello struct {
 func (x *SayHello) Reset() {
 	*x = SayHello{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_customer_proto_msgTypes[0]
+		mi := &file_hello_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -53,7 +53,7 @@ func (x *SayHello) String() string {
 func (*SayHello) ProtoMessage() {}
 
 func (x *SayHello) ProtoReflect() protoreflect.Message {
-	mi := &file_customer_proto_msgTypes[0]
+	mi := &file_hello_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -66,7 +66,7 @@ func (x *SayHello) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SayHello.ProtoReflect.Descriptor instead.
 func (*SayHello) Descriptor() ([]byte, []int) {
-	return file_customer_proto_rawDescGZIP(), []int{0}
+	return file_hello_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *SayHello) GetName() string {
@@ -87,7 +87,7 @@ type HelloReply struct {
 func (x *HelloReply) Reset() {
 	*x = HelloReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_customer_proto_msgTypes[1]
+		mi := &file_hello_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -100,7 +100,7 @@ func (x *HelloReply) String() string {
 func (*HelloReply) ProtoMessage() {}
 
 func (x *HelloReply) ProtoReflect() protoreflect.Message {
-	mi := &file_customer_proto_msgTypes[1]
+	mi := &file_hello_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -113,7 +113,7 @@ func (x *HelloReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HelloReply.ProtoReflect.Descriptor instead.
 func (*HelloReply) Descriptor() ([]byte, []int) {
-	return file_customer_proto_rawDescGZIP(), []int{1}
+	return file_hello_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *HelloReply) GetMessage() string {
@@ -123,47 +123,46 @@ func (x *HelloReply) GetMessage() string {
 	return ""
 }
 
-var File_customer_proto protoreflect.FileDescriptor
+var File_hello_proto protoreflect.FileDescriptor
 
-var file_customer_proto_rawDesc = []byte{
-	0x0a, 0x0e, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x12, 0x05, 0x67, 0x72, 0x65, 0x65, 0x74, 0x22, 0x1e, 0x0a, 0x08, 0x53, 0x61, 0x79, 0x48, 0x65,
-	0x6c, 0x6c, 0x6f, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x26, 0x0a, 0x0a, 0x48, 0x65, 0x6c, 0x6c, 0x6f,
-	0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x32,
-	0x74, 0x0a, 0x05, 0x67, 0x72, 0x65, 0x65, 0x74, 0x12, 0x32, 0x0a, 0x0a, 0x47, 0x65, 0x74, 0x53,
-	0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x12, 0x0f, 0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x53,
-	0x61, 0x79, 0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x1a, 0x11, 0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e,
-	0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x37, 0x0a, 0x0f,
-	0x47, 0x65, 0x74, 0x53, 0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x41, 0x67, 0x61, 0x69, 0x6e, 0x12,
-	0x0f, 0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x53, 0x61, 0x79, 0x48, 0x65, 0x6c, 0x6c, 0x6f,
-	0x1a, 0x11, 0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x52, 0x65,
-	0x70, 0x6c, 0x79, 0x22, 0x00, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+var file_hello_proto_rawDesc = []byte{
+	0x0a, 0x0b, 0x68, 0x65, 0x6c, 0x6c, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x05, 0x67,
+	0x72, 0x65, 0x65, 0x74, 0x22, 0x1e, 0x0a, 0x08, 0x53, 0x61, 0x79, 0x48, 0x65, 0x6c, 0x6c, 0x6f,
+	0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
+	0x6e, 0x61, 0x6d, 0x65, 0x22, 0x26, 0x0a, 0x0a, 0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x52, 0x65, 0x70,
+	0x6c, 0x79, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x32, 0x6a, 0x0a, 0x05,
+	0x67, 0x72, 0x65, 0x65, 0x74, 0x12, 0x2d, 0x0a, 0x05, 0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x12, 0x0f,
+	0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x53, 0x61, 0x79, 0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x1a,
+	0x11, 0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x52, 0x65, 0x70,
+	0x6c, 0x79, 0x22, 0x00, 0x12, 0x32, 0x0a, 0x0a, 0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x41, 0x67, 0x61,
+	0x69, 0x6e, 0x12, 0x0f, 0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x53, 0x61, 0x79, 0x48, 0x65,
+	0x6c, 0x6c, 0x6f, 0x1a, 0x11, 0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x48, 0x65, 0x6c, 0x6c,
+	0x6f, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
-	file_customer_proto_rawDescOnce sync.Once
-	file_customer_proto_rawDescData = file_customer_proto_rawDesc
+	file_hello_proto_rawDescOnce sync.Once
+	file_hello_proto_rawDescData = file_hello_proto_rawDesc
 )
 
-func file_customer_proto_rawDescGZIP() []byte {
-	file_customer_proto_rawDescOnce.Do(func() {
-		file_customer_proto_rawDescData = protoimpl.X.CompressGZIP(file_customer_proto_rawDescData)
+func file_hello_proto_rawDescGZIP() []byte {
+	file_hello_proto_rawDescOnce.Do(func() {
+		file_hello_proto_rawDescData = protoimpl.X.CompressGZIP(file_hello_proto_rawDescData)
 	})
-	return file_customer_proto_rawDescData
+	return file_hello_proto_rawDescData
 }
 
-var file_customer_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_customer_proto_goTypes = []interface{}{
+var file_hello_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_hello_proto_goTypes = []interface{}{
 	(*SayHello)(nil),   // 0: greet.SayHello
 	(*HelloReply)(nil), // 1: greet.HelloReply
 }
-var file_customer_proto_depIdxs = []int32{
-	0, // 0: greet.greet.GetStudent:input_type -> greet.SayHello
-	0, // 1: greet.greet.GetStudentAgain:input_type -> greet.SayHello
-	1, // 2: greet.greet.GetStudent:output_type -> greet.HelloReply
-	1, // 3: greet.greet.GetStudentAgain:output_type -> greet.HelloReply
+var file_hello_proto_depIdxs = []int32{
+	0, // 0: greet.greet.Hello:input_type -> greet.SayHello
+	0, // 1: greet.greet.HelloAgain:input_type -> greet.SayHello
+	1, // 2: greet.greet.Hello:output_type -> greet.HelloReply
+	1, // 3: greet.greet.HelloAgain:output_type -> greet.HelloReply
 	2, // [2:4] is the sub-list for method output_type
 	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -171,13 +170,13 @@ var file_customer_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_customer_proto_init() }
-func file_customer_proto_init() {
-	if File_customer_proto != nil {
+func init() { file_hello_proto_init() }
+func file_hello_proto_init() {
+	if File_hello_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_customer_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_hello_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SayHello); i {
 			case 0:
 				return &v.state
@@ -189,7 +188,7 @@ func file_customer_proto_init() {
 				return nil
 			}
 		}
-		file_customer_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_hello_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*HelloReply); i {
 			case 0:
 				return &v.state
@@ -206,20 +205,20 @@ func file_customer_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_customer_proto_rawDesc,
+			RawDescriptor: file_hello_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_customer_proto_goTypes,
-		DependencyIndexes: file_customer_proto_depIdxs,
-		MessageInfos:      file_customer_proto_msgTypes,
+		GoTypes:           file_hello_proto_goTypes,
+		DependencyIndexes: file_hello_proto_depIdxs,
+		MessageInfos:      file_hello_proto_msgTypes,
 	}.Build()
-	File_customer_proto = out.File
-	file_customer_proto_rawDesc = nil
-	file_customer_proto_goTypes = nil
-	file_customer_proto_depIdxs = nil
+	File_hello_proto = out.File
+	file_hello_proto_rawDesc = nil
+	file_hello_proto_goTypes = nil
+	file_hello_proto_depIdxs = nil
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -234,8 +233,8 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type GreetClient interface {
-	GetStudent(ctx context.Context, in *SayHello, opts ...grpc.CallOption) (*HelloReply, error)
-	GetStudentAgain(ctx context.Context, in *SayHello, opts ...grpc.CallOption) (*HelloReply, error)
+	Hello(ctx context.Context, in *SayHello, opts ...grpc.CallOption) (*HelloReply, error)
+	HelloAgain(ctx context.Context, in *SayHello, opts ...grpc.CallOption) (*HelloReply, error)
 }
 
 type greetClient struct {
@@ -246,18 +245,18 @@ func NewGreetClient(cc grpc.ClientConnInterface) GreetClient {
 	return &greetClient{cc}
 }
 
-func (c *greetClient) GetStudent(ctx context.Context, in *SayHello, opts ...grpc.CallOption) (*HelloReply, error) {
+func (c *greetClient) Hello(ctx context.Context, in *SayHello, opts ...grpc.CallOption) (*HelloReply, error) {
 	out := new(HelloReply)
-	err := c.cc.Invoke(ctx, "/greet.greet/GetStudent", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/greet.greet/Hello", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *greetClient) GetStudentAgain(ctx context.Context, in *SayHello, opts ...grpc.CallOption) (*HelloReply, error) {
+func (c *greetClient) HelloAgain(ctx context.Context, in *SayHello, opts ...grpc.CallOption) (*HelloReply, error) {
 	out := new(HelloReply)
-	err := c.cc.Invoke(ctx, "/greet.greet/GetStudentAgain", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/greet.greet/HelloAgain", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -266,57 +265,57 @@ func (c *greetClient) GetStudentAgain(ctx context.Context, in *SayHello, opts ..
 
 // GreetServer is the server API for Greet service.
 type GreetServer interface {
-	GetStudent(context.Context, *SayHello) (*HelloReply, error)
-	GetStudentAgain(context.Context, *SayHello) (*HelloReply, error)
+	Hello(context.Context, *SayHello) (*HelloReply, error)
+	HelloAgain(context.Context, *SayHello) (*HelloReply, error)
 }
 
 // UnimplementedGreetServer can be embedded to have forward compatible implementations.
 type UnimplementedGreetServer struct {
 }
 
-func (*UnimplementedGreetServer) GetStudent(context.Context, *SayHello) (*HelloReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetStudent not implemented")
+func (*UnimplementedGreetServer) Hello(context.Context, *SayHello) (*HelloReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Hello not implemented")
 }
-func (*UnimplementedGreetServer) GetStudentAgain(context.Context, *SayHello) (*HelloReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetStudentAgain not implemented")
+func (*UnimplementedGreetServer) HelloAgain(context.Context, *SayHello) (*HelloReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method HelloAgain not implemented")
 }
 
 func RegisterGreetServer(s *grpc.Server, srv GreetServer) {
 	s.RegisterService(&_Greet_serviceDesc, srv)
 }
 
-func _Greet_GetStudent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Greet_Hello_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SayHello)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(GreetServer).GetStudent(ctx, in)
+		return srv.(GreetServer).Hello(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/greet.greet/GetStudent",
+		FullMethod: "/greet.greet/Hello",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GreetServer).GetStudent(ctx, req.(*SayHello))
+		return srv.(GreetServer).Hello(ctx, req.(*SayHello))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Greet_GetStudentAgain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Greet_HelloAgain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SayHello)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(GreetServer).GetStudentAgain(ctx, in)
+		return srv.(GreetServer).HelloAgain(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/greet.greet/GetStudentAgain",
+		FullMethod: "/greet.greet/HelloAgain",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GreetServer).GetStudentAgain(ctx, req.(*SayHello))
+		return srv.(GreetServer).HelloAgain(ctx, req.(*SayHello))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -326,14 +325,14 @@ var _Greet_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*GreetServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetStudent",
-			Handler:    _Greet_GetStudent_Handler,
+			MethodName: "Hello",
+			Handler:    _Greet_Hello_Handler,
 		},
 		{
-			MethodName: "GetStudentAgain",
-			Handler:    _Greet_GetStudentAgain_Handler,
+			MethodName: "HelloAgain",
+			Handler:    _Greet_HelloAgain_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "customer.proto",
+	Metadata: "hello.proto",
 }

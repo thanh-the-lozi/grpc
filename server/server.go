@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	pd "lozi-training/grpc/customer"
+	pd "lozi-training/grpc/proto"
 	"net"
 
 	"google.golang.org/grpc"
@@ -12,16 +12,16 @@ type server struct {
 	pd.UnimplementedGreetServer
 }
 
-func (s *server) GetStudent(ctx context.Context, r *pd.SayHello) (*pd.HelloReply, error) {
+func (s *server) Hello(ctx context.Context, r *pd.SayHello) (*pd.HelloReply, error) {
 	data := pd.HelloReply{
-		Message: r.Name,
+		Message: "Hello: " + r.Name,
 	}
 	return &data, nil
 }
 
-func (s *server) GetStudentAgain(ctx context.Context, r *pd.SayHello) (*pd.HelloReply, error) {
+func (s *server) HelloAgain(ctx context.Context, r *pd.SayHello) (*pd.HelloReply, error) {
 	data := pd.HelloReply{
-		Message: "hello again " + r.Name,
+		Message: "Hello again: " + r.Name,
 	}
 	return &data, nil
 }
