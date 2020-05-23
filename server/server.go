@@ -2,8 +2,8 @@ package main
 
 import (
 	"context"
-	pd "lozi-training/grpc/proto"
 	"net"
+	pd "source/grpc/proto"
 
 	"google.golang.org/grpc"
 )

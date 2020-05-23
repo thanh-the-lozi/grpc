@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"log"
-	pd "lozi-training/grpc/proto"
+	pd "source/grpc/proto"
 	"time"
 
 	"google.golang.org/grpc"
